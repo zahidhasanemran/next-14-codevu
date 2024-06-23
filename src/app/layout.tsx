@@ -20,7 +20,6 @@ export default function RootLayout({
 }) {
   const pathname = usePathname()
   const isActiveLink = (url: string) => {
-    console.log(pathname)
 
     if (pathname === url) {
       return true

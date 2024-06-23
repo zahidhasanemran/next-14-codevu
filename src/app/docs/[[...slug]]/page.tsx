@@ -1,6 +1,17 @@
+'use client'
 import React from 'react'
 
+function getRandomInit(count: number) {
+  return Math.floor(Math.random() * count)
+}
+
 const CatchAllRoutes = ({ params }: { params: { slug: string[] } }) => {
+  const randomNumber = getRandomInit(2)
+
+  if (randomNumber === 1) {
+    throw new Error('Loading Error')
+  }
+
   return (
     <div>
       <h2>Catch All Routes </h2>
@@ -9,6 +20,7 @@ const CatchAllRoutes = ({ params }: { params: { slug: string[] } }) => {
           <li key={i}>{sm}</li>
         ))}
       </ul>
+      <p>{randomNumber}</p>
     </div>
   )
 }
