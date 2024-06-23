@@ -5,7 +5,7 @@ const CatchAllRoutes = ({ params }: { params: { slug: string[] } }) => {
     <div>
       <h2>Catch All Routes </h2>
       <ul>
-        {params.slug.map((sm, i) => (
+        {params?.slug?.map((sm, i) => (
           <li key={i}>{sm}</li>
         ))}
       </ul>
