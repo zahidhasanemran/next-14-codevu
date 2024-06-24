@@ -4,11 +4,18 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
 export function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname === '/dashboard') {
-    // return NextResponse.rewrite(new URL('/docs', req.url)) FOR SEO OPTIMIZATION AND Lagacy url support
-    return NextResponse.redirect(new URL('/docs', req.url))
-  }
+  // if (req.nextUrl.pathname === '/dashboard') {
+  //   // return NextResponse.rewrite(new URL('/docs', req.url)) FOR SEO OPTIMIZATION AND Lagacy url support
+  //   return NextResponse.redirect(new URL('/docs', req.url))
+  // }
   // return NextResponse.redirect(new URL('/', req.url))
+
+  const response = NextResponse.next()
+  const themePref = req.cookies.get('theme')
+  if (!themePref) {
+    response.cookies.set('theme', 'dark')
+  }
+  return response
 }
 
 // export const config = {
