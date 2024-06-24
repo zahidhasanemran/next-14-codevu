@@ -4,9 +4,13 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
 export function middleware(req: NextRequest) {
-  return NextResponse.redirect(new URL('/', req.url))
+  if (req.nextUrl.pathname === '/dashboard') {
+    // return NextResponse.rewrite(new URL('/docs', req.url)) FOR SEO OPTIMIZATION AND Lagacy url support
+    return NextResponse.redirect(new URL('/docs', req.url))
+  }
+  // return NextResponse.redirect(new URL('/', req.url))
 }
 
-export const config = {
-  matcher: '/dashboard',
-}
+// export const config = {
+//   matcher: '/dashboard',
+// }
