@@ -15,6 +15,8 @@ export function middleware(req: NextRequest) {
   if (!themePref) {
     response.cookies.set('theme', 'dark')
   }
+
+  response.headers.set('custom-headers', 'Emran')
   return response
 }
 
